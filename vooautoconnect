@@ -1,8 +1,13 @@
 #!/bin/bash
 EMAIL="your_email_here"
 PASSWORD="your_password_here"
-SSID=$(/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I | awk '/ SSID/ {print substr($0, index($0, $2))}')
 
+if [ `uname` == "Linux" ]
+then
+      SSID=$(iwconfig wlan0 | grep ESSID | sed 's/.*ESSID:"\(.*\)"/\1/g')
+else
+      SSID=$(/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I | awk '/ SSID/ {print substr($0, index($0, $2))}')
+fi
 
 echo "[+] VOO_HOMESPOT autoconenct start..."
 if [ "$SSID" == "VOO_HOMESPOT" ]
