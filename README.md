@@ -14,11 +14,12 @@ Here is what vooautoconnect does.
 
 USAGE
 ==============
+modify vooautoconnect with your credentials, then
 ```
 chmod +x vooautoconnect
 mv vooautoconnect /usr/local/bin
 ```
-then edit your crontab
+and automatically schedule it (let's say each minute), adding this to your crontab:
 ```
 * * * * * autoconnect > /dev/null 2>&1
 ```
