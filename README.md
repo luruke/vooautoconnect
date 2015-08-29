@@ -21,7 +21,7 @@ mv vooautoconnect /usr/local/bin
 ```
 and automatically schedule it (let's say each minute), adding this to your crontab:
 ```
-* * * * * autoconnect > /dev/null 2>&1
+* * * * * vooautoconnect > /dev/null 2>&1
 ```
 
 TODO
