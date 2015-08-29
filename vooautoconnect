@@ -5,7 +5,7 @@ SSID=$(/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/R
 
 
 echo "[+] VOO_HOMESPOT autoconenct start..."
-if [ "$SSID"="VOO_HOMESPOT" ]
+if [ "$SSID" == "VOO_HOMESPOT" ]
 then
       echo "[+] you are using VOO_HOMESPOT wifi!"
       IS_ONLINE=$(curl http://google.be -s)
