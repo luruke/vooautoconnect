@@ -1,5 +1,5 @@
 # ./vooautoconnect
-==============
+
 From VOO_HOMESPOT FAQ:
 ![faq](http://i.imgur.com/R0RQrnU.png "FAQ")
 Very boring...Can't leave the computer downloading/uploading...
@@ -22,3 +22,11 @@ then edit your crontab
 ```
 * * * * * autoconnect > /dev/null 2>&1
 ```
+
+TODO
+==============
+- Improve logs
+- ARGS? Flags? Options?
+- Detect user/password error
+- use vooautoconnect on rasperry as AP repeater?
+- Support linux (just need to change the SSID detection)
