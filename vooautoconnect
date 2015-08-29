@@ -1,0 +1,30 @@
+#!/bin/bash
+EMAIL="your_email_here"
+PASSWORD="your_password_here"
+SSID=$(/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I | awk '/ SSID/ {print substr($0, index($0, $2))}')
+
+
+echo "[+] VOO_HOMESPOT autoconenct start..."
+if [ "$SSID"="VOO_HOMESPOT" ]
+then
+      echo "[+] you are using VOO_HOMESPOT wifi!"
+      IS_ONLINE=$(curl http://google.be -s)
+
+      if [ -z "$IS_ONLINE" ]
+      then
+            echo "[+] you are logged out! Connect!"
+
+            curl 'https://wifree.voo.be/authenticate.html' \
+                  -H 'Origin: https://wifree.voo.be' \
+                  -H 'Upgrade-Insecure-Requests: 1' \
+                  -H 'Content-Type: application/x-www-form-urlencoded' \
+                  --data-urlencode username=$EMAIL \
+                  --data-urlencode password=$PASSWORD \
+                  --data accept=accept \
+                  --data rememberme=rememberme \
+                  --data target= \
+                  -L
+      fi
+fi
+
+exit 0
